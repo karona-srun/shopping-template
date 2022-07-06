@@ -1,0 +1,251 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+.alert {
+    border-radius: 0px !important;
+}
+
+.alert-black {
+    background-color: #000000;
+    color: #fff;
+}
+
+.nav-icon {
+    color: #fff !important;
+}
+.btn {
+    border: 2px solid #000000 !important;
+    border-radius: 0px !important;
+}
+.badge {
+    font-size: 0.9em !important;
+}
+
+.btn-sm,
+.btn-group-sm {
+    padding: 0.1rem 0.5rem !important;
+}
+
+.btn-black {
+    border: 2px solid #000000 !important;
+    border-radius: 0px !important;
+    color: #000000 !important;
+    font-size: 14px !important;
+    box-shadow: 3px 3px #000000 !important;
+}
+
+.btn-black:hover {
+    border: 2px solid #000000 !important;
+    border-radius: 0px !important;
+    color: #000000 !important;
+    box-shadow: 0px 0px #000000 !important;
+}
+
+.card {
+    border: 1px solid #000000 !important;
+    border-radius: 0px !important;
+}
+
+.card-shadow {
+    box-shadow: 5px 5px #000000;
+    border-radius: 0px !important;
+}
+
+.card-shadow:hover {
+    box-shadow: 5px 5px #00000000;
+    border: 1px solid #000000 !important;
+}
+
+.card-header {
+    padding: 0 !important;
+}
+.navbar {
+    padding: 0px !important;
+}
+
+.bg-navbar {
+    background-color: #1c30e2 !important;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #fff !important;
+}
+.nav-head {
+    color: #000000 !important;
+}
+
+a,
+button {
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
+}
+
+// Bootstrap - remove outline
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control {
+    border: 1px solid #000000 !important;
+    border-radius: 0px !important;
+    font-size: 0.85rem !important;
+}
+
+.form-select{
+  border: 1px solid #000000 !important;
+  border-radius: 0px !important;
+}
+
+button:focus,
+button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+[type="text"].form-control:focus,
+[type="password"].form-control:focus,
+[type="email"].form-control:focus,
+[type="tel"].form-control:focus,
+[contenteditable].form-control:focus {
+    box-shadow: inset 0 -1px 0 #ddd;
+    border: 2px solid #000000 !important;
+}
+
+.p-title {
+    padding: 0rem 1rem;
+    margin-top: 11px !important;
+    position: relative !important;
+}
+
+// Admin
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    /* rtl:raw:
+    right: 0;
+    */
+    bottom: 0;
+    /* rtl:remove */
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    padding: 48px 0 0; /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 0rem;
+    }
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #727272;
+}
+
+.sidebar .nav-link.active {
+    color: #2470dc;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+/*
+   * Navbar
+   */
+
+.navbar-brand {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .navbar-toggler {
+    // top: .25rem;
+    left: 8rem;
+}
+
+.navbar .form-control {
+    padding: 0.75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.modal-body {
+    padding: 0.5rem 1rem !important;
+}
+
+.modal-content {
+    border-radius: 0 !important;
+}
+
+.modal-header {
+    border-bottom: 1px solid #fff !important;
+}
+
+.modal-footer {
+    border-top: 1px solid #fff !important;
+}
+
+//
+//  Menu item
+//
+.sidebar .nav-link {
+    font-size: 14px !important;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px !important;
+}
+
+.p-3-2{
+  padding: 0.3rem 2rem;
+}
+
+
+control:focus, .form-floating > .form-control:not(:placeholder-shown) {
+    padding-bottom: 0.125rem !important;
+}
