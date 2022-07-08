@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ListSubCategoryResource;
 use App\Http\Resources\ProductSubCategoryResource;
 use App\Models\ProductSubCategory;
 use Illuminate\Http\Request;
@@ -16,6 +17,12 @@ class ProductSubCategoryController extends Controller
     public function index()
     {
         $data = ProductSubCategoryResource::collection(ProductSubCategory::orderBy('updated_at','DESC')->get());
+        return response()->json(['data' => $data]);
+    }
+
+    public function getListSubCategory()
+    {
+        $data = ListSubCategoryResource::collection(ProductSubCategory::orderBy('updated_at','DESC')->get());
         return response()->json(['data' => $data]);
     }
 

@@ -1,6 +1,7 @@
 const state = () => ({
     categories: [],
-    category: []
+    category: [],
+    listCategory: []
 })
 
 // getters
@@ -10,6 +11,9 @@ const getters = {
     },
     getCategory(state) {
         return state.category;
+    },
+    getListCategory(state) {
+        return state.listCategory;
     }
 }
 
@@ -18,6 +22,11 @@ const actions = {
     initCategories(context) {
         axios.get("api/product-category").then((response) => {
             context.commit("initCategories", response.data.data);
+        });
+    },
+    getListCategory(context) {
+        axios.get("api/get-list-category").then((response) => {
+            context.commit("listCategory", response.data.data);
         });
     },
     addCategories(context, category) {
@@ -55,7 +64,9 @@ const actions = {
 const mutations = {
     initCategories(state, categories) {
         state.categories = categories;
-        console.log(categories);
+    },
+    listCategory(state, listCategory) {
+        state.listCategory = listCategory;
     },
     addCategories(state, category) {
         state.categories.push(category);

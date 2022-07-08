@@ -1,6 +1,7 @@
 const state = () => ({
     subCategories: [],
-    subCategory: []
+    subCategory: [],
+    listSubCategory: []
 })
 
 // getters
@@ -18,6 +19,11 @@ const actions = {
     initSubCategories(context) {
         axios.get("api/product-sub-category").then((response) => {
             context.commit("initSubCategories", response.data.data);
+        });
+    },
+    getSubCategories(context) {
+        axios.get("api/get-list-sub-category").then((response) => {
+            context.commit("getSubCategories", response.data.data);
         });
     },
     addSubCategories(context, category) {
@@ -56,6 +62,9 @@ const actions = {
 const mutations = {
     initSubCategories(state, subCategories) {
         state.subCategories = subCategories;
+    },
+    getSubCategories(state, listSubCategories) {
+        state.listSubCategories = listSubCategories;
     },
     addSubCategories(state, subCategory) {
         state.subCategories.push(subCategory);
