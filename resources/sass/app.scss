@@ -103,9 +103,9 @@ button {
     font-size: 0.85rem !important;
 }
 
-.form-select{
-  border: 1px solid #000000 !important;
-  border-radius: 0px !important;
+.form-select {
+    border: 1px solid #000000 !important;
+    border-radius: 0px !important;
 }
 
 button:focus,
@@ -241,11 +241,50 @@ input[type="number"]:focus,
     font-size: 14px !important;
 }
 
-.p-3-2{
-  padding: 0.3rem 2rem;
+.p-3-2 {
+    padding: 0.3rem 2rem;
 }
 
-
-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
+control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
     padding-bottom: 0.125rem !important;
+}
+
+.multiselect-single-label-text {
+    margin-top: 15px !important;
+    font-size: 0.9rem !important;
+}
+
+.multiselect-placeholder {
+    color: rgb(2, 2, 2) !important;
+    margin-top: 10px !important;
+    font-size: 0.9rem !important;
+}
+
+.form-control:focus .form-select:focus .multiselect:focus {
+    outline: none !important;
+}
+
+.multiselect-search {
+    border-radius: 0px !important;
+    margin-top: 10px !important;
+    background: transparent !important;
+    border: 0px solid #727272 !important;
+    font-size: 0.9rem !important;
+}
+.multiselect .is-open {
+    margin-top: 0px !important;
+    font-size: 0.9rem !important;
+}
+.multiselect-search:focus {
+    margin-top: 0px !important;
+    border: 0px solid #000000 !important;
+    font-size: 0.9rem !important;
+}
+.multiselect:focus {
+    border-radius: 0px !important;
+    margin-top: 0px !important;
+    background: transparent !important;
+    box-shadow: 0 0 0 var(--ms-ring-width, 3px)
+        var(--ms-ring-color, rgba(16, 185, 129, 0)) !important;
 }

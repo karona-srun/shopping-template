@@ -55,7 +55,6 @@ const actions = {
 const mutations = {
     initCategories(state, categories) {
         state.categories = categories;
-        console.log(categories);
     },
     addCategories(state, category) {
         state.categories.push(category);
