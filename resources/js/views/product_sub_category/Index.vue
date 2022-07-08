@@ -115,21 +115,19 @@
           <div class="modal-body">
             <form ref="signUp">
               <div class="form-floating mb-3">
-                <select
-                  v-model="add.category_id"
-                  class="form-select form-select-custom"
-                  id="floatingSelect"
-                  aria-label="Floating label select example"
-                >
-                  <option
-                    v-for="category in loadCategory"
-                    v-bind:key="category.id"
-                    :value="category.id"
-                    selected
+                <Multiselect
+                    class="form-select"
+                    mode="single"
+                    v-model="add.category_id"
+                    :options="loadCategory"
+                    placeholder="ជ្រើសរើសប្រភេទផលិតផល"
+                    track-by="value"
+                    label="label"
+                    :close-on-select="true"
+                    :searchable="false"
+                    :object="false"
                   >
-                    {{ category.name_kh }}
-                  </option>
-                </select>
+                  </Multiselect>
                 <label>ឈ្មោះក្រុម</label>
               </div>
               <div class="form-floating mb-3">
@@ -151,15 +149,18 @@
                 <label for="floatingPassword">ឈ្មោះជាអង់គ្លេស</label>
               </div>
               <div class="form-floating mb-3">
-                <select
-                  v-model="add.status"
-                  class="form-select form-select-custom"
-                  id="floatingSelect"
-                  aria-label="Floating label select example"
-                >
-                  <option value="0" selected>សកម្ម</option>
-                  <option value="1">អសកម្ម</option>
-                </select>
+                <Multiselect
+                    class="form-select"
+                    mode="single"
+                    v-model="add.status"
+                    :options="options"
+                    placeholder="ជ្រើសរើសស្ថានភាព"
+                    track-by="value"
+                    label="label"
+                    :close-on-select="true"
+                    :searchable="false"
+                    :object="false"
+                  ></Multiselect>
                 <label for="floatingPassword">ស្ថានភាព</label>
               </div>
             </form>
@@ -223,21 +224,19 @@
                 v-model="data.id"
               />
               <div class="form-floating mb-3">
-                <select
-                  v-model="data.category_id"
-                  class="form-select form-select-custom"
-                  id="floatingSelect"
-                  aria-label="Floating label select example"
-                >
-                  <option
-                    v-for="category in loadCategory"
-                    v-bind:key="category.id"
-                    :value="category.id"
-                    selected
+                <Multiselect
+                    class="form-select"
+                    mode="single"
+                    v-model="data.category_id"
+                    :options="loadCategory"
+                    placeholder="ជ្រើសរើសប្រភេទផលិតផល"
+                    track-by="value"
+                    label="label"
+                    :close-on-select="true"
+                    :searchable="false"
+                    :object="false"
                   >
-                    {{ category.name_kh }}
-                  </option>
-                </select>
+                  </Multiselect>
                 <label>ឈ្មោះក្រុម</label>
               </div>
               <div class="form-floating mb-3">
@@ -259,15 +258,19 @@
                 <label for="floatingPassword">ឈ្មោះជាអង់គ្លេស</label>
               </div>
               <div class="form-floating mb-3">
-                <select
-                  v-model="data.status"
-                  class="form-select form-select-custom"
-                  id="floatingSelect"
-                  aria-label="Floating label select example"
-                >
-                  <option value="0" selected>សកម្ម</option>
-                  <option value="1">អសកម្ម</option>
-                </select>
+                <Multiselect
+                    class="form-select"
+                    mode="single"
+                    v-model="data.status"
+                    :options="options"
+                    placeholder="ជ្រើសរើសស្ថានភាព"
+                    track-by="value"
+                    label="label"
+                    :close-on-select="true"
+                    :searchable="false"
+                    :object="false"
+                  >
+                  </Multiselect>
                 <label for="floatingPassword">ស្ថានភាព</label>
               </div>
             </form>
@@ -342,7 +345,9 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
+import Multiselect from "@vueform/multiselect";
 export default {
+  components: { Multiselect },
   data() {
     return {
       ID: null,
@@ -352,6 +357,13 @@ export default {
         name_en: null,
         status: 0,
       },
+      options:[{
+        value:0,
+        label:"សកម្ម"
+      },{
+        value:1,
+        label:"អសកម្ម"
+      }]
     };
   },
   computed: {
@@ -359,7 +371,7 @@ export default {
       return this.$store.state.ProductSubCategory.subCategories;
     },
     loadCategory() {
-      return this.$store.state.ProductCategory.categories;
+      return this.$store.state.ProductCategory.listCategory;
     },
     loadData() {
       return this.$store.state.ProductSubCategory.subCategory;
@@ -369,7 +381,7 @@ export default {
     this.refreshData();
   },
   methods: {
-    ...mapActions("ProductCategory", ["initCategories"]),
+    ...mapActions("ProductCategory", ["getListCategory"]),
     ...mapActions("ProductSubCategory", [
       "initSubCategories",
       "addSubCategories",
@@ -401,7 +413,7 @@ export default {
     },
     refreshData() {
       this.initSubCategories();
-      this.initCategories();
+      this.getListCategory();
     },
 
     refreshModal() {

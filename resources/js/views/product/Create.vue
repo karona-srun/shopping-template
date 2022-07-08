@@ -31,7 +31,6 @@
         <div class="card-body">
           <p class="card-title mb-4">
             ផលិតផល<small>( បំពេញព័ត៍មានរបស់អ្នក )</small>
-            {{datas}}
           </p>
           <form ref="signUp">
             <div class="row g-2 mb-3">
@@ -41,17 +40,13 @@
                     class="form-select"
                     mode="single"
                     v-model="datas.category"
-                    :options="loadCategory.map(category => category.name_kh)"
+                    :options="loadCategory"
                     placeholder="ជ្រើសរើសប្រភេទផលិតផល"
-                    key="id"
-                    label="name_kh"
+                    track-by="value"
+                    label="label"
                     :close-on-select="true"
                     :searchable="false"
-                    :track-by="id"
-                    :object="true"
-                    :resolve-on-load="false"
-                    :delay="0"
-                    :min-chars="1"
+                    :object="false"
                   >
                   </Multiselect>
                   <label>ឈ្មោះប្រភេទផលិតផល</label>
@@ -63,17 +58,13 @@
                     class="form-select"
                     mode="single"
                     v-model="datas.subCategory"
-                    :options="loadSubCategory.map(subCategory => subCategory.name_kh)"
+                    :options="loadSubCategory"
                     placeholder="ជ្រើសរើសប្រភេទរងផលិតផល"
-                    key="id"
-                    label="name_kh"
+                    track-by="value"
+                    label="label"
                     :close-on-select="true"
                     :searchable="false"
-                    track-by="name_kh"
-                    :object="true"
-                    :resolve-on-load="false"
-                    :delay="0"
-                    :min-chars="1"
+                    :object="false"
                   >
                   </Multiselect>
                   <label>ឈ្មោះប្រភេទរងផលិតផល</label>
@@ -230,22 +221,22 @@ export default {
   },
   computed: {
     loadSubCategory() {
-      return this.$store.state.ProductSubCategory.subCategories;
+      return this.$store.state.ProductSubCategory.listSubCategories;
     },
     loadCategory() {
-      return this.$store.state.ProductCategory.categories;
+      return this.$store.state.ProductCategory.listCategory;
     },
   },
   created() {
     this.refreshData();
   },
   methods: {
-    ...mapActions("ProductCategory", ["initCategories"]),
-    ...mapActions("ProductSubCategory", ["initSubCategories"]),
+    ...mapActions("ProductCategory", ["getListCategory"]),
+    ...mapActions("ProductSubCategory", ["getSubCategories"]),
     ...mapActions("Product", ["addProduct"]),
     refreshData() {
-      this.initSubCategories();
-      this.initCategories();
+      this.getListCategory();
+      this.getSubCategories()
     },
     saveProduct(){
       console.log( JSON.parse(datas) );

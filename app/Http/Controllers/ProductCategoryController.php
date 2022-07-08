@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ListCategoryResource;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductCategoryResource;
@@ -16,6 +17,13 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $data = ProductCategoryResource::collection(ProductCategory::orderBy('updated_at','DESC')->get());
+        return response()->json(['data' => $data]);
+    }
+
+
+    public function getListCategory()
+    {
+        $data = ListCategoryResource::collection( ProductCategory::orderBy('updated_at','DESC')->get());
         return response()->json(['data' => $data]);
     }
 

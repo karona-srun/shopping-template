@@ -130,10 +130,18 @@
                 <label for="floatingPassword">ឈ្មោះជាអង់គ្លេស</label>
               </div>
               <div class="form-floating mb-3">
-                <select v-model="add.status" class="form-control">
-                  <option value="0" selected>សកម្ម</option>
-                  <option value="1">អសកម្ម</option>
-                </select>
+                <Multiselect
+                    class="form-select"
+                    mode="single"
+                    v-model="add.status"
+                    :options="options"
+                    placeholder="ជ្រើសរើសស្ថានភាព"
+                    track-by="value"
+                    label="label"
+                    :close-on-select="true"
+                    :searchable="false"
+                    :object="false"
+                  ></Multiselect>
                 <label for="floatingPassword">ស្ថានភាព</label>
               </div>
             </form>
@@ -209,10 +217,18 @@
                 <label for="floatingPassword">ឈ្មោះជាអង់គ្លេស</label>
               </div>
               <div class="form-floating mb-3">
-                <select v-model="data.status" class="form-control">
-                  <option value="0" selected>សកម្ម</option>
-                  <option value="1">អសកម្ម</option>
-                </select>
+                <Multiselect
+                    class="form-select"
+                    mode="single"
+                    v-model="data.status"
+                    :options="options"
+                    placeholder="ជ្រើសរើសស្ថានភាព"
+                    track-by="value"
+                    label="label"
+                    :close-on-select="true"
+                    :searchable="false"
+                    :object="false"
+                  ></Multiselect>
                 <label for="floatingPassword">ស្ថានភាព</label>
               </div>
             </form>
@@ -276,7 +292,9 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
+import Multiselect from "@vueform/multiselect";
 export default {
+  components: { Multiselect },
   data() {
     return {
       ID: null,
@@ -285,6 +303,13 @@ export default {
         name_en: null,
         status: 0,
       },
+      options:[{
+        value:0,
+        label:"សកម្ម"
+      },{
+        value:1,
+        label:"អសកម្ម"
+      }]
     };
   },
   computed: {

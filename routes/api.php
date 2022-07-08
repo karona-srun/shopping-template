@@ -22,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('product-category','ProductCategoryController');
+Route::get('get-list-category','ProductCategoryController@getListCategory');
 Route::resource('product-sub-category', 'ProductSubCategoryController');
+Route::get('get-list-sub-category', 'ProductSubCategoryController@getListSubCategory');
 Route::resource('product','ProductCategoryController');
