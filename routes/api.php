@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductSubCategoryControlle;
 use App\Http\Controllers\ProductCategoryControlle;
+use App\Http\Controllers\ProductControlle;
+use App\Http\Controllers\AttachmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +27,7 @@ Route::resource('product-category','ProductCategoryController');
 Route::get('get-list-category','ProductCategoryController@getListCategory');
 Route::resource('product-sub-category', 'ProductSubCategoryController');
 Route::get('get-list-sub-category', 'ProductSubCategoryController@getListSubCategory');
-Route::resource('product','ProductCategoryController');
+Route::resource('product','ProductController');
+Route::post('update-product','ProductController@updateProduct');
+Route::resource('attachments','AttachmentController');
+Route::post('get-attachments','AttachmentController@getListAttachment');

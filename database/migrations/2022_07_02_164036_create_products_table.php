@@ -21,13 +21,16 @@ class CreateProductsTable extends Migration
             $table->text('title_en');
             $table->longText('content_kh');
             $table->longText('content_en');
-            $table->float('price',2);
+            $table->float('price');
+            $table->float('sale_price');
+            $table->tinyInteger('qty');
             $table->tinyInteger('rate');
             $table->string('promote');
+            $table->boolean('status');
             $table->text('thumbnail')->nullable();
             $table->string('keywords')->nullable();
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

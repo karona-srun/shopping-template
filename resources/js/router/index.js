@@ -20,6 +20,8 @@ import ProductSubCategoryList from '../views/product_sub_category/Index.vue';
 
 import ProductList from '../views/product/Index.vue';
 import CreateProducts from '../views/product/Create.vue';
+import ShowProducts from '../views/product/Show.vue';
+import EditProducts from '../views/product/Edit.vue';
 
 import Dashboard from '../views/Dashboard.vue';
 
@@ -52,6 +54,16 @@ const routes = [
                 path: '/create-products',
                 name: 'Create Products',
                 component: CreateProducts
+            },
+            {
+                path: '/products/:id',
+                name: 'Show Products',
+                component: ShowProducts
+            },
+            {
+                path: '/products/:id/edit',
+                name: 'Edit Products',
+                component: EditProducts
             }
         ]
     },

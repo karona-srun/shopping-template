@@ -20,17 +20,17 @@ const getters = {
 // actions
 const actions = {
     initCategories(context) {
-        axios.get("api/product-category").then((response) => {
+        axios.get("/api/product-category").then((response) => {
             context.commit("initCategories", response.data.data);
         });
     },
     getListCategory(context) {
-        axios.get("api/get-list-category").then((response) => {
+        axios.get("/api/get-list-category").then((response) => {
             context.commit("listCategory", response.data.data);
         });
     },
     addCategories(context, category) {
-        return axios.post("api/product-category", category )
+        return axios.post("/api/product-category", category )
             .then((response) => {
                 context.commit("addCategory", {
                     id: response.data.insert_id,
@@ -39,21 +39,21 @@ const actions = {
             });
     },
     showCategory(context, id) {
-        axios.get("api/product-category/"+id )
+        axios.get("/api/product-category/"+id )
             .then((response) => {
                 context.commit("showCategory", response.data.data);
             });
     },
     updateCategories(context,category) {
         return axios
-            .patch("api/product-category/" + category[0].id, category[0])
+            .patch("/api/product-category/" + category[0].id, category[0])
             .then((response) => {
                 context.commit("updateCategory", response.data.data);
             });
     },
     deleteCategories(context, categoryID) {
         return axios
-            .delete("api/product-category/"+categoryID)
+            .delete("/api/product-category/"+categoryID)
             .then((response) => {
                 context.commit("deleteCategory", categoryID);
             });

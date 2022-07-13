@@ -17,17 +17,17 @@ const getters = {
 // actions
 const actions = {
     initSubCategories(context) {
-        axios.get("api/product-sub-category").then((response) => {
+        axios.get("/api/product-sub-category").then((response) => {
             context.commit("initSubCategories", response.data.data);
         });
     },
     getSubCategories(context) {
-        axios.get("api/get-list-sub-category").then((response) => {
+        axios.get("/api/get-list-sub-category").then((response) => {
             context.commit("getSubCategories", response.data.data);
         });
     },
     addSubCategories(context, category) {
-        return axios.post("api/product-sub-category", category )
+        return axios.post("/api/product-sub-category", category )
             .then((response) => {
                 context.commit("addSubCategory", {
                     id: response.data.insert_id,
@@ -36,7 +36,7 @@ const actions = {
             });
     },
     showSubCategory(context, id) {
-        axios.get("api/product-sub-category/"+id )
+        axios.get("/api/product-sub-category/"+id )
             .then((response) => {
                 context.commit("showSubCategory", response.data.data);
             });
@@ -44,14 +44,14 @@ const actions = {
     updateSubCategories(context,category) {
         console.log(...category);
         return axios
-            .patch("api/product-sub-category/" + category[0].id, category[0])
+            .patch("/api/product-sub-category/" + category[0].id, category[0])
             .then((response) => {
                 context.commit("updateSubCategory", response.data.data);
             });
     },
     deleteSubCategories(context, categoryID) {
         return axios
-            .delete("api/product-sub-category/"+categoryID)
+            .delete("/api/product-sub-category/"+categoryID)
             .then((response) => {
                 context.commit("deleteSubCategory", categoryID);
             });
