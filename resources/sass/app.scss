@@ -288,3 +288,67 @@ control:focus,
     box-shadow: 0 0 0 var(--ms-ring-width, 3px)
         var(--ms-ring-color, rgba(16, 185, 129, 0)) !important;
 }
+
+::-webkit-file-upload-button {
+    display: none;
+}
+
+#preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#preview img {
+    max-width: 100%;
+    max-height: 150px !important;
+}
+
+
+// 
+// SweetAlert
+// 
+.swal-modal{
+    border-radius: 0px !important;
+}
+
+.swal-title:not(:last-child){
+    margin-bottom: 0px !important;
+}
+
+.swal-title:first-child{
+    margin-top: 0px !important;
+}
+
+.swal-footer{
+    margin-top: 0px !important;
+}
+
+.swal-button{
+    background: #fffe !important;
+    border: 2px solid #000000 !important;
+    border-radius: 0px !important;
+    color: #000000 !important;
+    font-size: 14px !important;
+    box-shadow: 3px 3px #000000 !important;
+}
+
+.swal-button:hover {
+    border: 2px solid #000000 !important;
+    border-radius: 0px !important;
+    color: #000000 !important;
+    box-shadow: 0px 0px #000000 !important;
+}
+
+.img-review{
+    width: 150px !important;
+}
+
+.img-review-100{
+    width: 80px !important;
+}
+
+.img-list{
+    height: 124px !important;
+    width: -webkit-fill-available !important;
+}

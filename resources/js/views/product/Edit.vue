@@ -1,11 +1,11 @@
 <template>
   <div>
-    <form ref="createProduct" @submit.prevent="formSubmit" enctype="multipart/form-data">
+    <form ref="editProduct" @submit.prevent="formSubmit" enctype="multipart/form-data">
       <div class="card card-shadow">
         <div class="card-header container-fluid">
           <div class="row">
             <div class="col-auto me-auto">
-              <p class="p-title">បង្កើតផលិតផល</p>
+              <p class="p-title">កែសម្រួលព័តមានផលិតផល</p>
             </div>
             <div class="col-auto p-3-2">
               <button
@@ -15,7 +15,7 @@
                 រក្សាទិន្នន័យ
               </button>
               <router-link
-                :to="{ path: 'products' }"
+                :to="{ path: '/products' }"
                 class="btn btn-black"
                 style="right: 1rem; bottom: 0.5rem"
               >
@@ -38,7 +38,7 @@
                   <Multiselect
                     class="form-select"
                     mode="single"
-                    v-model="datas.category"
+                    v-model="product.category_id"
                     :options="loadCategory"
                     placeholder="ជ្រើសរើសប្រភេទផលិតផល"
                     track-by="value"
@@ -56,7 +56,7 @@
                   <Multiselect
                     class="form-select"
                     mode="single"
-                    v-model="datas.sub_category"
+                    v-model="product.sub_category_id"
                     :options="loadSubCategory"
                     placeholder="ជ្រើសរើសប្រភេទរងផលិតផល"
                     track-by="value"
@@ -75,7 +75,7 @@
                 <div class="form-floating">
                   <input
                     type="text"
-                    v-model="datas.title_kh"
+                    v-model="product.title_kh"
                     class="form-control"
                     id="floatingInputGrid"
                     placeholder="ឈ្មោះផលិតផល"
@@ -87,7 +87,7 @@
                 <div class="form-floating">
                   <input
                     type="text"
-                    v-model="datas.title_en"
+                    v-model="product.title_en"
                     class="form-control"
                     id="floatingInputGrid"
                     placeholder="Product Name"
@@ -104,7 +104,7 @@
                     type="number"
                     min="0"
                     step="0.01"
-                    v-model="datas.price"
+                    v-model="product.price"
                     class="form-control"
                     id="floatingInputGrid"
                     placeholder="ឈ្មោះផលិតផល"
@@ -116,7 +116,7 @@
                 <div class="form-floating">
                   <input
                     type="number"
-                    v-model="datas.promote"
+                    v-model="product.promote"
                     min="0"
                     step="0.01"
                     class="form-control"
@@ -132,7 +132,7 @@
                   <Multiselect
                     class="form-select"
                     mode="single"
-                    v-model="datas.rate"
+                    v-model="product.rate"
                     :options="rateOptions"
                     placeholder="ជ្រើសរើសការពេញនិយម"
                     key="value"
@@ -154,7 +154,7 @@
                     type="number"
                     min="0"
                     step="0.01"
-                    v-model="datas.sale_price"
+                    v-model="product.sale_price"
                     class="form-control"
                     id="floatingInputGrid"
                     placeholder="ឈ្មោះផលិតផល"
@@ -166,7 +166,7 @@
                 <div class="form-floating">
                   <input
                     type="number"
-                    v-model="datas.qty"
+                    v-model="product.qty"
                     min="0"
                     class="form-control"
                     id="floatingInputGrid"
@@ -181,7 +181,7 @@
               <div class="col-md">
                 <div class="form-floating">
                   <textarea
-                    v-model="datas.content_kh"
+                    v-model="product.content_kh"
                     class="form-control"
                     placeholder="Leave a comment here"
                     id="floatingTextarea1"
@@ -193,7 +193,7 @@
               <div class="col-md">
                 <div class="form-floating">
                   <textarea
-                    v-model="datas.content_en"
+                    v-model="product.content_en"
                     class="form-control"
                     placeholder="Leave a comment here"
                     id="floatingTextarea2"
@@ -222,8 +222,8 @@
               <div class="col-md">
                 <div id="preview">
                   <img
-                    v-if="datas.thumbnail"
-                    :src="datas.thumbnail"
+                    v-if="product.path"
+                    :src="path == '' ? product.path : path"
                     class="img-fluid img-thumbnail"
                   />
                 </div>
@@ -264,25 +264,15 @@ export default {
           label: "ពេញនិយមខ្លាំង",
         },
       ],
-      datas: {
-        category: "",
-        sub_category: "",
-        thumbnail: '',
-        rate: "",
-        price: 0,
-        sale_price: 0,
-        qty: 0,
-        promote: 0,
-        title_kh: '',
-        title_en: '',
-        status: 0,
-        content_kh: '',
-        content_en: '',
-      },
+      product: [],
+      path: '',
       file: null,
     };
   },
   computed: {
+    loadData() {
+      return this.$store.state.Product.product;
+    },
     loadSubCategory() {
       return this.$store.state.ProductSubCategory.listSubCategories;
     },
@@ -296,27 +286,33 @@ export default {
   methods: {
     ...mapActions("ProductCategory", ["getListCategory"]),
     ...mapActions("ProductSubCategory", ["getSubCategories"]),
-    ...mapActions("Product", ["addProduct"]),
+    ...mapActions("Product", ["addProduct","showProduct","updateProduct"]),
     refreshData() {
       this.getListCategory();
       this.getSubCategories();
+      var response = this.showProduct(this.$route.params.id);
+      response.then((resp) => {
+        this.product = resp;
+      });
     },
     formSubmit() {
-      let formData = new FormData();
-      formData.append("category", this.datas.category);
-      formData.append("sub_category", this.datas.sub_category);
-      formData.append("title_kh", this.datas.title_kh);
-      formData.append("title_en", this.datas.title_en);
-      formData.append("content_kh", this.datas.content_kh);
-      formData.append("content_en", this.datas.content_en);
-      formData.append("price", this.datas.price);
-      formData.append("sale_price", this.datas.sale_price);
-      formData.append("qty", this.datas.qty);
-      formData.append("rate", this.datas.rate);
-      formData.append("promote", this.datas.promote);
-      formData.append("file", this.file);
+      var fd = new FormData();
+      fd.append("id", this.product.id);
+      fd.append("category", this.product.category_id);
+      fd.append("sub_category", this.product.sub_category_id);
+      fd.append("title_kh", this.product.title_kh);
+      fd.append("title_en", this.product.title_en);
+      fd.append("content_kh", this.product.content_kh);
+      fd.append("content_en", this.product.content_en);
+      fd.append("price", this.product.price);
+      fd.append("sale_price", this.product.sale_price);
+      fd.append("qty", this.product.qty);
+      fd.append("rate", this.product.rate);
+      fd.append("promote", this.product.promote);
+      fd.append("file", this.file);
 
-      var response = this.addProduct(formData);
+      var response = this.updateProduct(fd);
+      
       response.then((resp) => {
         if (resp.success == false) {
           swal({
@@ -332,13 +328,13 @@ export default {
             icon: "success",
             button: "បាទ/ចា៎",
           });
-          this.$refs.createProduct.reset();
+          this.$refs.editProduct.reset(); 
         }
-      });
+      });    
     },
     onFileChange(e) {
-      let file = e.target.files[0];
-      this.datas.thumbnail = URL.createObjectURL(file);
+      this.file = e.target.files[0];
+      this.path = URL.createObjectURL(this.file);
     },
   },
 };

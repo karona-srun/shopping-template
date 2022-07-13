@@ -16,35 +16,43 @@ const getters = {
 // actions
 const actions = {
     initProducts(context) {
-        axios.get("api/product").then((response) => {
-            context.commit("initCategories", response.data.data);
+        axios.get("/api/product").then((response) => {
+            context.commit("initProducts", response.data);
         });
     },
     addProduct(context, product) {
-        return axios.post("api/product", product )
+        const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+        return axios.post("/api/product", product, config )
             .then((response) => {
                 context.commit("addProduct", {
                     id: response.data.id,
                     ...product
                 });
+                return response.data;
             });
     },
     showProduct(context, id) {
-        axios.get("api/product/"+id )
-            .then((response) => {
-                context.commit("showProduct", response.data.data);
+        return axios.get("/api/product/"+id )
+            .then(response => {
+                context.commit("showProduct", response.data);
+                return response.data;
             });
     },
     updateProduct(context,product) {
-        return axios
-            .patch("api/product/" + product[0].id, product[0])
-            .then((response) => {
-                context.commit("updateProduct", response.data.data);
+        const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+        return axios.post(`/api/update-product`, product)
+            .then(response => {
+                context.commit("updateProduct", response.data);
+                return response.data;
             });
     },
     deleteProduct(context, productID) {
         return axios
-            .delete("api/product/"+productID)
+            .delete("/api/product/"+productID)
             .then((response) => {
                 context.commit("deleteProduct", productID);
             });
@@ -60,6 +68,7 @@ const mutations = {
         state.products.push(product);
     },
     showProduct(state, product) {
+        state.product.pop();
         state.product.push(product);
     },
     updateProduct(state, product) {
