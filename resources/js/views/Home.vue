@@ -14,68 +14,58 @@
       </p>
     </div>
     <div class="container">
+      <h5>បញ្ជើរប្រភេទក្រុមផលិតផល</h5>
+      <div v-for="(data, i) in loadDatas.productCategory" :key="i">
+        <button class="btn btn-black mb-1">{{ data.name_kh }}</button>
+      </div>
+      <h5>បញ្ជើរប្រភេទរងក្រុមផលិតផល</h5>
+      <div v-for="(data, i) in loadDatas.productSubCategory" :key="i">
+        <button class="btn btn-black mb-1">{{ data.name_kh }}</button>
+      </div>
       <div class="row">
-        <div class="col-sm-6 col-md-3 mt-3">
-          <div class="card card-shadow">
+        <div
+          class="col-sm-6 col-md-2 mt-3"
+          v-for="(data, i) in loadDatas.products"
+          :key="i"
+        >
+        <router-link :to="{ path: '/products-detail/' + data.id }">
+          <div class="card">
+            <img class="card-img-top" :src="data.path" alt="Card image cap" />
+            <div class="card-img-overlay">
+              <span class="card-title bg-warning text-black p-1 rounded">
+                {{ data.sale_price }} $
+              </span>
+            </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <h6 class="card-title text-black">{{ data.title_kh }}</h6>
+              <h6 class="card-title">
+                <i
+                  class="bi bi-hand-thumbs-up-fill text-black"
+                  v-for="(like, li) in data.rate"
+                  :key="li"
+                ></i>
+              </h6>
             </div>
           </div>
+          </router-link>
         </div>
-        <div class="col-sm-6 col-md-3 mt-3">
-          <div class="card card-shadow">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-3">
-          <div class="card card-shadow">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-3">
-          <div class="card card-shadow">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-        
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import { mapActions, mapGetters, mapState } from "vuex";
+export default {
+  computed: {
+    loadDatas() {
+      return this.$store.state.Home.datas;
+    },
+  },
+  created() {
+    this.initDatas();
+  },
+  methods: {
+    ...mapActions("Home", ["initDatas"]),
+  },
+};
 </script>

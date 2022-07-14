@@ -4,7 +4,7 @@ const state = () => ({
     listSubCategory: []
 })
 
-// getters
+// GETTERS
 const getters = {
     getSubCategories(state) {
         return state.subCategories;
@@ -14,7 +14,7 @@ const getters = {
     }
 }
 
-// actions
+// ACTIONS
 const actions = {
     initSubCategories(context) {
         axios.get("/api/product-sub-category").then((response) => {
@@ -58,7 +58,7 @@ const actions = {
     }
 }
 
-// mutations
+// MUTATIONS
 const mutations = {
     initSubCategories(state, subCategories) {
         state.subCategories = subCategories;

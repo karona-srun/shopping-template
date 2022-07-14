@@ -352,3 +352,9 @@ control:focus,
     height: 124px !important;
     width: -webkit-fill-available !important;
 }
+
+@media (min-width: 600px){
+    .navbar-nav {
+        padding-left: 25px;
+    }
+}

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductSubCategoryControlle;
 use App\Http\Controllers\ProductCategoryControlle;
 use App\Http\Controllers\ProductControlle;
 use App\Http\Controllers\AttachmentController;
+use App\Http\Controllers\FrontEnd_HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('get-datas','FrontEnd_HomeController@home');
 
 Route::resource('product-category','ProductCategoryController');
 Route::get('get-list-category','ProductCategoryController@getListCategory');

@@ -4,6 +4,7 @@ import ProductCategory from './modules/ProductCategory';
 import ProductSubCategory from './modules/ProductSubCategory';
 import Product from './modules/Product';
 import Attachment from './modules/Attachment';
+import Home from './modules/Home';
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -24,7 +25,8 @@ export default createStore({
         ProductCategory,
         ProductSubCategory,
         Product,
-        Attachment
+        Attachment,
+        Home
     },
     strict: debug,
     plugins: debug ? [createLogger()] : []

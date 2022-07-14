@@ -4,7 +4,7 @@ const state = () => ({
     listCategory: []
 })
 
-// getters
+// GETTERS
 const getters = {
     getCategories(state) {
         return state.categories;
@@ -17,7 +17,7 @@ const getters = {
     }
 }
 
-// actions
+// ACTIONS
 const actions = {
     initCategories(context) {
         axios.get("/api/product-category").then((response) => {
@@ -60,7 +60,7 @@ const actions = {
     }
 }
 
-// mutations
+// MUTATIONS
 const mutations = {
     initCategories(state, categories) {
         state.categories = categories;

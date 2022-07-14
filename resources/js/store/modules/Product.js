@@ -3,7 +3,7 @@ const state = () => ({
     product: []
 })
 
-// getters
+// GETTERS
 const getters = {
     getProducts(state) {
         return state.products;
@@ -13,7 +13,7 @@ const getters = {
     }
 }
 
-// actions
+// ACTIONS
 const actions = {
     initProducts(context) {
         axios.get("/api/product").then((response) => {
@@ -59,7 +59,7 @@ const actions = {
     }
 }
 
-// mutations
+// MUTATIONS
 const mutations = {
     initProducts(state, products) {
         state.products = products;

@@ -59,6 +59,11 @@
               >
             </li>
             <li class="nav-item active">
+              <router-link :to="{ name: 'products' }" class="nav-link"
+                >ផលិតផល</router-link
+              >
+            </li>
+            <li class="nav-item active">
               <router-link :to="{ name: 'entertainment' }" class="nav-link"
                 >កម្សាន្ត</router-link
               >

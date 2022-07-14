@@ -3,7 +3,7 @@ const state = () => ({
     attachment: []
 })
 
-// getters
+// GETTERS
 const getters = {
     getAttachments(state) {
         return state.attachments;
@@ -13,7 +13,7 @@ const getters = {
     }
 }
 
-// actions
+// ACTIONS
 const actions = {
     initAttachments(context, attachment) {
         axios.post("/api/get-attachments", attachment).then((response) => {
@@ -50,7 +50,7 @@ const actions = {
     }
 }
 
-// mutations
+// MUTATIONS
 const mutations = {
     initAttachments(state, attachments) {
         state.attachments = attachments;
