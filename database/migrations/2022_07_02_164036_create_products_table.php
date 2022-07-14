@@ -14,9 +14,9 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('sub_category_id');
+            $table->uuid('id')->primary();
+            $table->string('category_id');
+            $table->string('sub_category_id');
             $table->text('title_kh');
             $table->text('title_en');
             $table->longText('content_kh');
@@ -29,8 +29,8 @@ class CreateProductsTable extends Migration
             $table->boolean('status');
             $table->text('thumbnail')->nullable();
             $table->string('keywords')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

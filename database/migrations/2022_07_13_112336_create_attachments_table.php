@@ -14,8 +14,8 @@ class CreateAttachmentsTable extends Migration
     public function up()
     {
         Schema::create('attachments', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('attachment_id');
+            $table->uuid('id')->primary();
+            $table->string('attachment_id');
             $table->string('attachment_type');
             $table->longText('file');
             $table->timestamps();
