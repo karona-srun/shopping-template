@@ -26,4 +26,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductSubCategory::class,'sub_category_id');
     }
+
+    public function Attachment()
+    {
+        return $this->hasMany(Attachment::class,'attachment_id');
+    }
 }

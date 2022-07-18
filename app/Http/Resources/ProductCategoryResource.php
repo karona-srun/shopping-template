@@ -19,6 +19,7 @@ class ProductCategoryResource extends JsonResource
             'name_kh' => $this->name_kh,
             'name_en' => $this->name_en,
             'status' => $this->status,
+            'subcategory' => $this->ProductSubCategory,
             'created_at' => $this->created_at->format('jS F Y h:i:s A'),
             'updated_at' => $this->updated_at->format('jS F Y h:i:s A')
         ];

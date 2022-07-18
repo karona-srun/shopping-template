@@ -340,6 +340,10 @@ control:focus,
     box-shadow: 0px 0px #000000 !important;
 }
 
+.img-fluid{
+    width: 100% !important;
+}
+
 .img-review{
     width: 150px !important;
 }
@@ -357,4 +361,31 @@ control:focus,
     .navbar-nav {
         padding-left: 25px;
     }
+}
+
+.border-left{
+    border-left: 1px solid #00000087;
+}
+
+.card-img, .card-img-top, .card-img-bottom{
+    height: 100px !important;
+}
+
+span .card-title{
+    font-size: 14px !important;
+}
+
+.close{
+    border: 0px !important;
+    background: transparent;
+}
+
+.category-active{
+    border: 1px solid #fff !important;
+    width: -webkit-fill-available;
+    text-align: inherit;
+}
+
+.border-dashed{
+    border: 2px dashed;
 }

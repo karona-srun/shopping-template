@@ -28,6 +28,7 @@ class ProductResource extends JsonResource
             'rate' => $this->rate,
             'promote' => $this->promote,
             'thumbnail' => $this->thumbnail,
+            'attachments' => $this->Attachment,
             'path' => $this->path,
             'status' => $this->status == 1 ? 'សកម្ម' : 'អសកម្ម',
             'created_at' => $this->created_at->format('jS F Y h:i:s A'),

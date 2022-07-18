@@ -3,6 +3,10 @@
 [Documentation](https://sweetalert.js.org/guides/#advanced-examples)
 ```
 
+### Implementation Vue Product Zoomer
+```
+[Vue Product Zoomer](https://www.yoohooworld.com/#/)
+```
 
 ## Learning Laravel
 

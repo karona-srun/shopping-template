@@ -16,4 +16,9 @@ class Attachment extends Model
     {
         return asset($this->file);
     }
+
+    public function Product()
+    {
+    	return $this->belongsTo(Product::class,'id');
+    }
 }

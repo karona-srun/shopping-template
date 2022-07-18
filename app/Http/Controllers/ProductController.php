@@ -82,7 +82,7 @@ class ProductController extends Controller
         $product->rate = $request->rate;
         $product->promote = $request->promote;
         $product->status = 1;
-        $product->thumbnail = $filePath == null ? '' : $filePath ;
+        $product->thumbnail = $filePath;
         $product->created_by = 1;
         $product->updated_by = 1;
         $product->save();
