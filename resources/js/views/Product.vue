@@ -57,8 +57,8 @@
             </div>
           </router-link>
         </div>
-        <div class="col-md-9 border-dashed text-center" v-if="loadDatas.products == ''">
-          <h5 class="mt-4">មិនមានផលិតផលទេ</h5>
+        <div class="col-md-9" v-if="loadDatas.products == ''">
+          <p class="p-3 border-dashed text-center">មិនមានផលិតផលទេ</p>
         </div> 
       </div>
     </div>

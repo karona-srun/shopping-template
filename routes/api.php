@@ -23,6 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::get('dashboard','DashboardController@dashboard');
+
 Route::get('get-datas','FrontEnd_HomeController@home');
 Route::get('get-data/{id}','FrontEnd_HomeController@fetchData');
 Route::get('get-products-by-category/{id}','FrontEnd_HomeController@fetchProductByCategory');

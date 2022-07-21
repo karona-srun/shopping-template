@@ -11622,16 +11622,13 @@ control:focus,
   box-shadow: 0px 0px #000000 !important;
 }
 
-.img-fluid {
-  width: 100% !important;
-}
-
 .img-review {
   width: 150px !important;
 }
 
 .img-review-100 {
   width: 80px !important;
+  height: -webkit-fill-available;
 }
 
 .img-list {
@@ -11669,4 +11666,8 @@ span .card-title {
 
 .border-dashed {
   border: 2px dashed;
+}
+
+.img-min-width {
+  min-width: 100%;
 }

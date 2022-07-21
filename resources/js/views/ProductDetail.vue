@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mt-5">
       <div class="col-md-6 col-sm-12">
-        <img :src="loadData.path" class="rounded img-fluid" />
+        <img :src="loadData.path" class="rounded img-fluid img-min-width"/>
 
         <div class="row mt-4">
           <div
@@ -33,11 +33,9 @@
       </div>
     </div>
 
-    <div class="row mt-5 mb-2">
       <div class="col-md-12">
         <h4>ផលិតផលជាច្រើនទៀត</h4>
       </div>
-    </div>
     <div class="row">
       <div
         class="col-sm-6 col-md-2 mt-3"

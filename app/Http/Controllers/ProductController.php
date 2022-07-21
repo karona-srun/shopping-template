@@ -102,7 +102,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $data = Product::find($id);
+        $data = ProductResource::make(Product::find($id));
         return response()->json($data);
     }
 

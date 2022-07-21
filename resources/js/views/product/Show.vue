@@ -53,7 +53,7 @@
               <p class="fw-bold">ប្រភេទផលិត៖</p>
             </div>
             <div class="col-10">
-              <p class="fw-bold">{{ data.category_id }}</p>
+              <p class="fw-bold">{{ data.category }}</p>
             </div>
           </div>
           <div class="row g-2">
@@ -61,7 +61,7 @@
               <p class="fw-bold">ប្រភេទរងផលិត៖</p>
             </div>
             <div class="col-10">
-              <p class="fw-bold">{{ data.sub_category_id }}</p>
+              <p class="fw-bold">{{ data.sub_category }}</p>
             </div>
           </div>
           <div class="row g-2">
