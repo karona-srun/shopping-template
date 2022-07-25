@@ -6,6 +6,7 @@ import Product from './modules/Product';
 import Attachment from './modules/Attachment';
 import Home from './modules/Home';
 import Dashboard from './modules/Dashboard';
+import Auth from './modules/Auth';
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -28,7 +29,8 @@ export default createStore({
         Product,
         Attachment,
         Home,
-        Dashboard
+        Dashboard,
+        Auth
     },
     strict: debug,
     plugins: debug ? [createLogger()] : []

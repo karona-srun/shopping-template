@@ -16,7 +16,7 @@
     <div class="container">
       <div class="row">
         <div
-          class="col-sm-3 col-md-2 mt-3"
+          class="col-sm-3 col-md-1-5 mt-3"
           v-for="(data, i) in loadDatas.products"
           :key="i"
         >

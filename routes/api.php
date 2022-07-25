@@ -31,6 +31,14 @@ Route::get('get-data/{id}','FrontEnd_HomeController@fetchData');
 Route::get('get-products-by-category/{id}','FrontEnd_HomeController@fetchProductByCategory');
 Route::get('get-products-by-sub-category/{id}','FrontEnd_HomeController@fetchProductbySubCategory');
 
+Route::group(['prefix' => 'auth'], function ($router) {
+    Route::post('login', 'Auth\AuthController@login');
+    Route::post('logout', 'Auth\AuthController@logout');
+    Route::post('refresh', 'Auth\AuthController@refresh');
+    Route::post('me', 'Auth\AuthController@me');
+    Route::post('register', 'Auth\AuthController@register');
+});
+
 Route::resource('product-category','ProductCategoryController');
 Route::get('get-list-category','ProductCategoryController@getListCategory');
 Route::resource('product-sub-category', 'ProductSubCategoryController');
