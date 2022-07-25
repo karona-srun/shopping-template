@@ -35,37 +35,44 @@ const routes = [
             {
                 path: '/dashboard',
                 name: 'Dashboard',
-                component: Dashboard
+                component: Dashboard,
+                meta: { requiresAuth: true },
             },
             {
                 path: '/product-categories',
                 name: 'ProductCategoryList',
-                component: ProductCategoryList
+                component: ProductCategoryList,
+                meta: { requiresAuth: true },
             },
             {
                 path: '/product-sub-categories',
                 name: 'ProductSubCategoryList',
-                component: ProductSubCategoryList
+                component: ProductSubCategoryList,
+                meta: { requiresAuth: true },
             },
             {
                 path: '/products',
                 name: 'Products',
-                component: ProductList
+                component: ProductList,
+                meta: { requiresAuth: true },
             },
             {
                 path: '/create-products',
                 name: 'Create Products',
-                component: CreateProducts
+                component: CreateProducts,
+                meta: { requiresAuth: true },
             },
             {
                 path: '/products/:id',
                 name: 'Show Products',
-                component: ShowProducts
+                component: ShowProducts,
+                meta: { requiresAuth: true },
             },
             {
                 path: '/products/:id/edit',
                 name: 'Edit Products',
-                component: EditProducts
+                component: EditProducts,
+                meta: { requiresAuth: true },
             }
         ]
     },

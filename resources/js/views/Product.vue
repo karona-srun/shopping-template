@@ -30,20 +30,20 @@
           </div>
         </div>
         <div
-          class="col-sm-9 col-md-2 mt-3"
+          class="col-sm-9 col-md-1-5 mt-3"
           v-for="(data, i) in loadDatas.products"
           :key="i"
         >
           <router-link :to="{ path: '/products-detail/' + data.id }">
             <div class="card">
-              <img class="card-img-top" :src="data.path" alt="Card image cap" />
+              <img class="card-img-top" :src="data.path" alt="Card image cap"/>
               <div class="card-img-overlay">
                 <span class="card-title bg-warning text-black p-1 rounded">
                   {{ data.sale_price }} $
                 </span>
               </div>
               <div class="card-body">
-                <h6 class="card-title text-black">
+                <h6 class="card-title text-small text-black">
                   {{ data.title_kh.substring(0, 50) }}
                 </h6>
                 <h6 class="card-title">

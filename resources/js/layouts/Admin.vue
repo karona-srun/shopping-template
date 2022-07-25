@@ -22,9 +22,13 @@
       >` `
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="#" 
-                data-toggle="modal"
-                data-target=".bd-signout-modal-sm">ចាកចេញ</a>
+          <a
+            class="nav-link px-3"
+            href="#"
+            data-toggle="modal"
+            data-target=".bd-signout-modal-sm"
+            >ចាកចេញ</a
+          >
         </div>
       </div>
     </header>
@@ -81,10 +85,7 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link
-                  :to="{ path: '/products' }"
-                  class="nav-link"
-                >
+                <router-link :to="{ path: '/products' }" class="nav-link">
                   <i class="bi bi-bag"></i>
                   ផលិតផល
                 </router-link>
@@ -101,7 +102,7 @@
       </div>
     </div>
 
-<div
+    <div
       class="modal fade bd-signout-modal-sm"
       tabindex="-1"
       role="dialog"
@@ -130,8 +131,9 @@
             </button>
             <button
               type="button"
+              data-dismiss="modal"
               class="btn btn-black"
-              @click.prevent="signOut"
+              @click.prevent="submitLogout"
             >
               យល់ព្រម
             </button>
@@ -139,15 +141,25 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 <script>
+
 export default {
-  methods:{
-    signOut(){
-        alert('Success')
-    }
-  }
-}
+  name: "Admin",
+  data() {
+    return {};
+  },
+  methods: {
+    submitLogout() {
+      this.$store.dispatch("LOGOUT");
+      this.$router.push({ path: "/" });
+    },
+  },
+  computed: {
+    authError() {
+      return this.$store.getters.AUTH_ERROR;
+    },
+  },
+};
 </script>
