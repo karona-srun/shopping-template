@@ -50,6 +50,14 @@
           </div>
           <div class="row g-2">
             <div class="col-2 text-end">
+              <p class="fw-bold">លេខកូដ៖</p>
+            </div>
+            <div class="col-10">
+              <p class="fw-bold">{{ data.id }}</p>
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col-2 text-end">
               <p class="fw-bold">ប្រភេទផលិត៖</p>
             </div>
             <div class="col-10">
@@ -138,6 +146,16 @@
               <p class="fw-bold">
                 {{ data.keyword == "" ? data.keyword : "មិនមាន" }}
               </p>
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col-sm-12 col-md-6 text-start">
+              <p class="fw-bold">អត្តបទជាខ្មែរ៖​ </p>
+              <p class="fw-bold">{{ data.content_kh }}</p>
+            </div>
+            <div class="col-sm-12 col-md-6 text-start">
+              <p class="fw-bold">អត្ថបទជាអង់គ្លេស៖ </p>
+              <p class="fw-bold">{{ data.content_en }}</p>
             </div>
           </div>
           <hr />
