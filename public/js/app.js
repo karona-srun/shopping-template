@@ -25680,7 +25680,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/auth */ "./resources/js/helpers/auth.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'SignIn',
   data: function data() {
     return {
       form: {
@@ -25734,7 +25733,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/auth */ "./resources/js/helpers/auth.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Login',
   data: function data() {
     return {
       form: {
@@ -25756,7 +25754,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$store.commit("LOGIN_SUCCESS", res);
 
         _this.$router.push({
-          path: '/login'
+          path: '/signin'
         });
       })["catch"](function (err) {
         _this.$store.commit("LOGIN_FAILED", {

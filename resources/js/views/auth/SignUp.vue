@@ -54,7 +54,6 @@
     import { register } from '../../helpers/auth';
 
     export default {
-        name: 'Login',
         data() {
             return {
                 form: {
@@ -74,7 +73,7 @@
                 register(this.form)
                     .then(res => {
                         this.$store.commit("LOGIN_SUCCESS", res);
-                        this.$router.push({path: '/login'});
+                        this.$router.push({path: '/signin'});
                     })
                     .catch(err => {
                         this.$store.commit("LOGIN_FAILED", {err})

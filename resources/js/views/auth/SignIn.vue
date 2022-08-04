@@ -37,7 +37,6 @@
     import { login } from '../../helpers/auth';
 
     export default {
-        name: 'SignIn',
         data() {
             return {
                 form: {
